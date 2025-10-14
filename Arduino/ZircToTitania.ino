@@ -124,17 +124,9 @@ void loop() {
     */
     float exponent = -STEEPNESS * (adcValue - TRANSITION_POINT_ADC);  
     float calculatedValue = MAX_POT_VALUE / (1.0 + exp(exponent));
-    int potValue = constrain((int)calculatedValue, 0, 255);
-
-
+    
     // ========== Constrain the potentiometer values
-    if (potValue > 255) {
-      potValue = 255;
-    }
-
-    if (potValue < 5) {
-      potValue = 5;
-    }
+    int potValue = constrain((int)calculatedValue, 0, 255);
 
     MyPot.setWiper(potValue);  // set the new potentiometer value
 
